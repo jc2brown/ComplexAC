@@ -44,12 +44,12 @@ print "vl = " + str(l.V(I)(w))
 
 print "\nQ4"
 w = 754
-r = Res(1.5e3)
+r1 = Res(3e3)
+r2 = Res(3e3)
 l = Ind(10e-3)
 c = Cap(100e-6)
 E = polar(5, -45)
-
-Z = series(r, l, c)
+Z = series(parallel(r1, r2), l, c)
 I = E / Z
 print 'E = ' + str(E)
 print 'Zr = ' + str(r.Z()(w))

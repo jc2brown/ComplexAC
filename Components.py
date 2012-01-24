@@ -30,7 +30,10 @@ class Ind(Passive):
 def series(*cpts):
     Z = MathFunc( lambda w: polar(0, 0) )
     for cpt in cpts:
-        Z += cpt.Z()
+        if cpt.__class__ is MathFunc:
+            Z += cpt
+        else:
+            Z += cpt.Z()
     return Z
 
 def parallel(*cpts):
