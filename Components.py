@@ -27,3 +27,15 @@ class Ind(Passive):
     def Z(self):
         return MathFunc( lambda w: polar(w*self.p, 90) )
 
+def series(*cpts):
+    Z = MathFunc( lambda w: polar(0, 0) )
+    for cpt in cpts:
+        Z += cpt.Z()
+    return Z
+
+def parallel(*cpts):
+    one = polar(1, 0)
+    Z = MathFunc( lambda w: polar(0, 0) )
+    for cpt in cpts:
+        Z += one / cpt.Z()
+    return one / Z
