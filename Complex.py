@@ -32,8 +32,8 @@ class Complex(object):
     def __str__(self):
         def sign(n):
             if (n < 0):
-                return '- '
-            return '+ '
+                return ' - '
+            return ' + '
         def fOff():
             return (' sin', 0)
 #            if (self.o < -90):
@@ -45,7 +45,7 @@ class Complex(object):
 #            else:
 #                return (' cos', -90)
         f, off = fOff();
-        return str(rnd(self.x)) + ' + j' + str(rnd(self.y)) + ' --- ' + str(rnd(self.r)) + f + ' (wt ' + sign(self.o) + str(abs(rnd(self.o + off))) + ')'
+        return str(printUnits(self.x)) + sign(self.y) + 'j' + str(printUnits(abs(self.y))) + ' --- ' + str(printUnits(self.r)) + f + ' (wt' + sign(self.o) + str(printUnits(abs(self.o + off))) + ')'
         
         
     def __add__(self, c):

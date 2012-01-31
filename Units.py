@@ -12,11 +12,15 @@ def getUnit(place):
     return unit
 
 def getPlace(n):
-    place = floor(log10(n))
+    if ( n == 0 ):
+        return 1;
+    place = floor(log10(abs(n)))
     return place
 
 
 def getUnits(n):
+    if ( abs(n) < 1e-12 ):
+        n = 0
     place = getPlace(n)
     unit = getUnit(place)
     shift = (place - place % 3)
@@ -24,11 +28,9 @@ def getUnits(n):
     n = int(n * 10.0**prec) / 10.0**prec
     return (n, unit)
 
-
-n = 0.0000045678
-x = getUnits(n)
-
-base = x[0]
-unit = x[1]
-
-print str(base) + unit
+def printUnits(n):
+    x = getUnits(n)
+    return str(x[0]) + x[1]
+    
+    
+print printUnits(.000000000001)
